@@ -1,0 +1,93 @@
+robot_name: 'DINGDANG'  # 必须使用大写
+robot_name_cn: '叮当'
+first_name: '伟洲'
+last_name: '潘'
+timezone: HKT
+
+# 是否接入微信
+wechat: true
+
+# 当有邮件时，是否朗读邮件标题
+read_email_title: true
+
+# 当内容过长（> 200个字）时，是否继续朗读
+# true：读
+# false：改为发送内容
+read_long_content: false
+
+# 最长朗读内容（仅当 read_long_content 为 false 时有效）
+max_length: 200
+
+# 是否使用邮箱发送长内容而不是微信
+prefers_email: false
+
+# 勿扰模式，该时间段内不执行通知检查
+do_not_bother:
+    enable: true # 开启勿扰模式
+    since: 23    # 开始时间
+    till: 9      # 结束时间，如果比 since 小表示第二天
+
+# TTS 服务配置
+tts_engine: baidu-tts
+
+# STT 服务配置
+stt_engine: baidu-stt
+
+# 百度语音服务
+# http://yuyin.baidu.com/
+baidu_yuyin:
+    api_key: 'in7O99HsP0jQj9SadZUFNn7w'
+    secret_key: 'FqeYkMeXX1fSLzVGKwUcUCauFFoMjAQD'
+    per: 0  # 发音人选择 0：女生；1：男生；3：度逍遥；4：度丫丫
+
+# 唤醒SST引擎
+stt_passive_engine: sphinx # 如果要使用 snowboy，改为 snowboy-stt
+
+# pocketsphinx 唤醒SST引擎（默认）
+pocketsphinx:
+    fst_model: '/home/pi/g014b2b/g014b2b.fst'
+    hmm_dir: '/usr/share/pocketsphinx/model/hmm/en_US/hub4wsj_sc_8k' #optional
+
+# snowboy 唤醒SST引擎（可选）
+# https://snowboy.kitt.ai/dashboard
+snowboy:
+    model: '/home/pi/dingdang/client/snowboy/dingdangdingdang.pmdl'  # 唤醒词模型
+    sensitivity: "0.5"  # 敏感度
+
+# 聊天机器人
+# http://www.tuling123.com
+robot: tuling
+tuling:
+    tuling_key: '填写你的图灵机器人API Key'
+
+# 邮箱
+# 如果使用网易邮箱，还需设置允许第三方客户端收发邮件
+email:
+    enable: false
+    address: '你的邮箱地址'
+    password: '你的邮箱密码'  # 如果是网易邮箱，须填写应用授权密码而不是登录密码！
+    smtp_server: 'smtp.163.com'
+    smtp_port: '25'  # 这里填写非SSL协议端口号
+    imap_server: 'imap.163.com'
+    imap_port: '143'  # 这里填写非SSL协议端口号
+
+
+# 拍照
+# 需接入摄像头才能使用
+camera:
+    enable: false
+    dest_path: "/home/pi/camera" # 保存目录
+    quality: 5            # 成像质量（0~100）
+    vertical_flip: true     # 竖直翻转
+    horizontal_flip: false  # 水平翻转
+    count_down: 3           # 倒计时（秒），仅当开启倒计时时有效
+    sendToUser: true        # 拍完照是否发送到邮箱/微信
+    sound: true             # 是否有拍照音效
+
+
+#######################
+# 第三方插件的配置
+#######################
+
+# 在这里放第三方插件的配置
+# https://github.com/wzpan/dingdang-contrib
